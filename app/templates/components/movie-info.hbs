@@ -1,0 +1,14 @@
+
+{{#each movie as |m| }}
+<div class="panel panel-info">
+  <div class="panel-heading">
+	<h3 class="panel-title">{{m.title}}</h3>
+  </div>
+  <div class="panel-body">
+  	<p>{{m.plot}}</p>
+  	<p>{{m.genre}}</p>
+  </div>
+</div>
+{{/each}}
+
+{{yield}}
