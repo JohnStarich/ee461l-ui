@@ -5,7 +5,8 @@ export default Ember.Route.extend({
 		var movie;
 		Ember.$.ajax({
 	  		dataType: "json",
-	  		url: 'http://localhost:8080/v1/movies/search/The Dark Knight',
+	  		url: '/v1/movies/search/The Dark Knight',
+			data: {results: 20, page:1},
 			async: false,
 	  		success: function(data) {
 	  			movie = data;
