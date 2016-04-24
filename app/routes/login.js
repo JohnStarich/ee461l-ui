@@ -7,14 +7,16 @@ export default Ember.Route.extend({
 			console.log("we got to login.js");
 			console.log(username);
 			console.log(password);
-			var mail = JSON.stringify({'name': username});
+			// var mail = JSON.stringify({'name': username});
+			var u = $.parseHTML(username);
+			var p = $.parseHTML(password);
 			Ember.$.ajax({
+				traditional: true,
 				type: "POST",
-				url: '/v1/login/',
+				url: '/v1/login',
 				contentType: "application/json; charset=utf-8",
             	dataType: "json",
-				data: mail,
-				async: false,
+				data: {username: u, password: p},
 				success: function(data) {
 					if(data) {
 						// this.transitionTo('index');

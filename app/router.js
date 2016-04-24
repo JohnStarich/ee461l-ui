@@ -7,7 +7,6 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('login');
-  this.route('sendLogin', {path: '/login/:username'});
   this.route('movies');
   this.route('groups');
   this.route('friends');
