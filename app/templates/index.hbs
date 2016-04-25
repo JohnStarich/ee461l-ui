@@ -1,9 +1,51 @@
+<nav class="navbar">
+	<div class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="col-md-4">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					{{#link-to 'index' class="navbar-brand"}} Movie Matcher {{/link-to}}
+				</div>
+				<ul class="nav navbar-nav">
+					<li>{{#link-to 'movies'}} movies {{/link-to}}</li>
+					<li>{{#link-to 'groups'}} groups {{/link-to}}</li>
+					<li>{{#link-to 'friends'}} friends {{/link-to}}</li>
+				</ul>
+			</div>
+			<div class="col-md-4">
+				<form class="navbar-form navbar-right" role="search">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search">
+					</div>
+				</form>
+			</div>
+			<div class="col-md-4">
+				<ul class="nav navbar-nav navbar-right">
+					{{#bs-dropdown tagName="li"}}
+					{{#bs-dropdown-toggle}} Dropdown {{/bs-dropdown-toggle}}
+					{{#bs-dropdown-menu}} 
+					<li>{{#link-to 'settings'}} settings {{/link-to}}</li>
+					{{/bs-dropdown-menu}}
+					{{/bs-dropdown}}
+				</ul>
+			</div>
+		</div>
+	</div>
+</nav>
+
 <div class="row">
 	<div class="container-fluid">
 		<div class="col-md-6">
 			<h3>Project Under Maintenance</h3>
 			<p>Check back soon!</p>
+			<span class="glyphicon glyphicon-star"></span>
 		</div>
 	</div>
 </div>
+
 {{outlet}}
