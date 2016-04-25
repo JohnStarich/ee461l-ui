@@ -1,0 +1,16 @@
+{{title 'Search'}}
+
+<form {{action 'search' on='submit' query=model.search}}>
+    {{input type='text' value=model.search class="form-control" placeholder="Search movies"}}
+</form>
+<br>
+Results:
+<br>
+<br>
+{{#each model.data as |movie|}}
+    {{movie-info movie = movie}}
+{{/each}}
+
+<div>
+    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>thing!
+</div>
