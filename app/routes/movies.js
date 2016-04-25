@@ -4,6 +4,7 @@ export default Ember.Route.extend({
 
 	model() {
 		var movie;
+		console.log("got to movies");
 		Ember.$.ajax({
 	  		dataType: "json",
 	  		url: '/v1/movies/search/The Dark Knight',
@@ -14,5 +15,5 @@ export default Ember.Route.extend({
 	  		}
 		});
 		return movie;
-	}
+	},
 });
