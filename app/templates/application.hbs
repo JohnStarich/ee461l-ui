@@ -23,17 +23,10 @@
 				</ul>
 			</div>
 			<div class="col-md-4">
-				<form class="navbar-form navbar-right" role="search">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
-					</div>
-				</form>
-			</div>
-			<div class="col-md-4">
 				<ul class="nav navbar-nav navbar-right">
 					{{#bs-dropdown tagName="li"}}
 					{{#bs-dropdown-toggle}} Dropdown {{/bs-dropdown-toggle}}
-					{{#bs-dropdown-menu}} 
+					{{#bs-dropdown-menu}}
 					<li>{{#link-to 'settings'}} settings {{/link-to}}</li>
 					{{/bs-dropdown-menu}}
 					{{/bs-dropdown}}
