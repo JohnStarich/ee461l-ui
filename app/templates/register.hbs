@@ -1,0 +1,64 @@
+{{title "Register"}}
+
+<div class="container">
+	 <div class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 loginbox">
+		  <div class="panel panel-info">
+				<div class="panel-heading">
+					 <div class="panel-title"> welcome to movie matcher </div>
+				</div>
+		  </div>
+		  <div class="panel-body panel-pad">
+				<form id="loginform" class="form-horizontal" role="form" {{action "userLogin" firstname lastname email username password confirmpassword on="submit"}}>
+					 <div class="input-group margT25">
+						  <span class="input-group-addon">
+								<i class="glyphicon glyphicon-user"></i>
+						  </span>
+						  {{input id="login-firstname" type="text" class="form-control" name="firstname" value=firstname placeholder="firstname"}}
+					 </div>
+
+					 <div class="input-group margT25">
+						  <span class="input-group-addon">
+								<i class="glyphicon glyphicon-user"></i>
+						  </span>
+
+						  {{input id="login-lastname" type="text" class="form-control" name="lastname" value=lastname placeholder="lastname"}}
+
+					 </div>
+
+					<div class="input-group margT25">
+						  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+
+						  {{input id="login-email" type="text" class="form-control" name="email" value=email placeholder="email"}}
+					 </div>			
+
+					 <div class="input-group margT25">
+						  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+
+						  {{input id="login-username" type="text" class="form-control" name="username" value=username placeholder="username"}}
+					 </div>				 
+
+					 <div class="input-group margT25">
+						  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+
+						  {{input id="login-password" type="password" class="form-control" name="password" value=password placeholder="password"}}
+					 </div>
+
+					 <div class="input-group margT25">
+						  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+
+						  {{input id="login-confirmpassword" type="password" class="form-control" name="password" value=confirmpassword placeholder="confirm password"}}
+				     </div>	
+
+					 <div class="form-group margT10">
+						  <!-- Button -->
+						  <div class="col-sm-12 controls">
+								{{input name="Login" type="submit" class="btn-login btn btn-block btn-success"}}
+						  </div>
+					 </div>
+
+				</form>
+		  </div>
+	 </div>
+</div>
+
+{{outlet}}
