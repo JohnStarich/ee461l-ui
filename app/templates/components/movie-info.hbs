@@ -6,6 +6,21 @@
   <div class="panel-body">
   	<p>{{m.plot}}</p>
   	<p>{{m.genre}}</p>
+  	<p> 
+  	{{!-- {{star-rating item=m rating='5' on-click="updateRating" maxRating=10}} --}}
+  	{{!-- could not get ^ this to work. the page had 5 glyphicon-star in the html for a rating of 5 but the glyphicons themselves were not on the screen --}}
+  	{{#if m.imdb_rating}}
+  	{{#star-rating maxRating=10 item=m rating=m.imdb_rating as |stars set|}}
+  		imdb rating 
+  		{{#each stars as |star|}}
+    		<a {{action set star.rating}}>
+      		{{#if star.full}}*{{/if}}
+    		</a>
+  		{{/each}}
+	{{/star-rating}}
+	{{/if}}
+	</p>
+	<p>user rating : need to add this</p>
   </div>
 </div>
 {{/each}}
