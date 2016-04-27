@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  status: undefined,
+  // status: undefined,
 
-  serializedQuery: Ember.computed('model.search', () => {
+  serializedQuery: Ember.computed('model.search', function() {
     const query = this.get('model.search');
     if(query !== undefined && query !== '' && query.trim().length > 0){
       return query.trim().split(' ').join('+');
@@ -11,15 +11,16 @@ export default Ember.Controller.extend({
     return undefined;
   }),
 
-  runSearch: Ember.observer('model.search', () => {
+  runSearch: Ember.observer('model.search', function() {
     Ember.run.debounce(this, this.actions.search, 500);
   }),
 
   actions: {
     loading(transition) {
-      this.set('status', 'loading');
+      // const controller = this.controllerFor('movies.search');
+      // controller.set('status', 'loading');
       transition.promise.finally(() => {
-        this.set('status', undefined);
+        // controller.set('status', undefined);
       });
     },
 

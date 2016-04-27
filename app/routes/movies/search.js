@@ -2,8 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model(params) {
+    if(params.search) {
+      params.search = params.search.split('+').join(' ').trim();
+    }
 		const query = params.search;
-		if(query !== undefined && query !== '') {
+		if(query) {
 		  return new Ember.RSVP.Promise(function(resolve, reject) {
         Ember.$.getJSON(
           `/v1/movies/search/${query}`,
@@ -15,5 +18,6 @@ export default Ember.Route.extend({
         return params;
       });
 		}
+		return {};
   }
 });
