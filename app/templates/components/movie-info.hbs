@@ -6,20 +6,37 @@
   	<p>{{movie.plot}}</p>
   	<p>{{movie.genre}}</p>
   	<p>
-  	{{!-- {{star-rating item=m rating='5' on-click="updateRating" maxRating=10}} --}}
+  	{{!-- {{star-rating maxRating=10 item=m rating=m.imdb_rating on-click="updateRating" }} --}}
   	{{!-- could not get ^ this to work. the page had 5 glyphicon-star in the html for a rating of 5 but the glyphicons themselves were not on the screen --}}
   	{{#if movie.imdb_rating}}
-  	{{#star-rating maxRating=10 item=movie rating=movie.imdb_rating as |stars set|}}
-  		imdb rating
-  		{{#each stars as |star|}}
-    		<a {{action set star.rating}}>
-      		{{#if star.full}}*{{/if}}
-    		</a>
-  		{{/each}}
-	{{/star-rating}}
-	{{/if}}
+    	{{#star-rating maxRating=10 item=movie rating=movie.imdb_rating as |stars set|}}
+    		imdb rating
+    		{{#each stars as |star|}}
+      		{{!-- <a {{action set star.rating}}> --}}
+        		{{#if star.full}}<span class="glyphicon glyphicon-star"></span>
+            {{else}} <span class="glyphicon glyphicon-star-empty"></span>
+            {{/if}}
+      		{{!-- </a> --}}
+    		{{/each}}
+  	 {{/star-rating}}
+	 {{/if}}
 	</p>
+
 	<p>user rating : need to add this</p>
     <p>{{#link-to 'movies.index' movie.id}}See more info{{/link-to}}</p>
+
+	<p>
+    {{#star-rating maxRating=10 item=movie rating=movie.imdb_rating on-click=(action "updateRating") as |stars set|}}
+    user rating
+      {{#each stars as |star|}}
+        <a {{action set star.rating}}>
+          {{#if star.full}}<span class="glyphicon glyphicon-star"></span>
+          {{else}} <span class="glyphicon glyphicon-star-empty"></span>
+          {{/if}}
+        </a>
+      {{/each}}
+    {{/star-rating}}
+  </p>
+
   </div>
 </div>
