@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   	actions: {
 		userLogin(firstname, lastname, email, username, password, confirmpassword) {
-			console.log(lastname);
 			const registerThis = this;
 			return new Ember.RSVP.Promise(function(resolve, reject) {
 				Ember.$.post(
