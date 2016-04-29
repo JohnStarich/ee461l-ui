@@ -1,24 +1,17 @@
 import Ember from 'ember';
+import RestUtils from 'moviematcher/utils/rest';
+import Cookie from 'moviematcher/utils/cookies';
 
 export default Ember.Controller.extend({
-  	actions: {
-		userLogin(email, password) {
-			const loginThis = this;
-			return new Ember.RSVP.Promise(function(resolve, reject) {
-				Ember.$.post(
-					'/v1/login',
-					{email: email, password: password},
-					resolve
-				).fail(reject);
-			}).then(function(value) {
-				if(value) {
-					loginThis.transitionToRoute('index');
-				}
-				else {
-					alert("you no exist");
-				}
-				return true;
-			});
+  actions: {
+		userLogin(username, password) {
+		  const sessionDurationSeconds = 2 * 60 * 60; // 2 hours
+			return new RestUtils().post('/v1/login', {username, password})
+        .then((value) => {
+          const cookie = Cookie.create({name: 'session'});
+          cookie.save(value.session_id, sessionDurationSeconds);
+          this.transitionToRoute('index');
+        });
 		}
 	}
 });
