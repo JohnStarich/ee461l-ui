@@ -8,7 +8,7 @@
 				</div>
 		  </div>
 		  <div class="panel-body panel-pad">
-				<form id="loginform" class="form-horizontal" role="form" {{action "userLogin" firstname lastname email username password confirmpassword on="submit"}}>
+				<form id="loginform" class="form-horizontal" role="form" {{action "userRegister" firstname lastname username password confirmpassword on="submit"}}>
 					 <div class="input-group margT25">
 						  <span class="input-group-addon">
 								<i class="glyphicon glyphicon-user"></i>
@@ -24,12 +24,6 @@
 						  {{input id="login-lastname" type="text" class="form-control" name="lastname" value=lastname placeholder="lastname"}}
 
 					 </div>
-
-					<div class="input-group margT25">
-						  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-
-						  {{input id="login-email" type="text" class="form-control" name="email" value=email placeholder="email"}}
-					 </div>			
 
 					 <div class="input-group margT25">
 						  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>

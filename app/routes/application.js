@@ -1,18 +1,17 @@
 import Ember from 'ember';
+import Cookie from 'moviematcher/utils/cookies';
+import RestUtils from 'moviematcher/utils/rest';
 
 export default Ember.Route.extend({
 	model() {
-		console.log("go to api");
-		var user;
-		Ember.$.ajax({
-	  		dataType: "json",
-	  		url: '/v1/login/session',
-			async: false,
-	  		success: function(data) {
-	  			console.log(data.email);
-	  			 user = data;
-	  		}
-	 	});
-	 	return user;
+	 	const cookie = Cookie.create({name: 'session'}).load();
+		return new RestUtils().get('v1/login', {
+			headers: {
+				"Authorization": cookie
+			}
+		})
+		.then((value) => {
+			return value;
+		});
 	}
 });

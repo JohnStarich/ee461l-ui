@@ -1,21 +1,18 @@
 import Ember from 'ember';
 
 export default Ember.Object.extend({
-  service(method, url, data) {
+  service(method, url, options = {
+    dataType: 'json',
+  }) {
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      let options = {
-        url: url,
-        type: method,
-        dataType: 'json',
-        success: resolve,
-        error: reject
-      };
+
+      options.url = url;
+      options.type = method;
+      options.success = resolve;
+      options.error = reject;
       if(method !== 'GET' && method !== 'get') {
-        options.data = JSON.stringify(data);
+        options.data = JSON.stringify(options.data);
         options.contentType = 'application/json';
-      }
-      else {
-        options.data = data;
       }
       return Ember.$.ajax(options);
     }).catch(function(reason) {
@@ -29,11 +26,11 @@ export default Ember.Object.extend({
     });
   },
 
-  get(url, data) {
-    return this.service('GET', url, data);
+  get(url, options) {
+    return this.service('GET', url, options);
   },
 
-  post(url, data) {
-    return this.service('POST', url, data);
+  post(url, options) {
+    return this.service('POST', url, options);
   }
 });

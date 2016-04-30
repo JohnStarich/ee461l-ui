@@ -5,12 +5,13 @@ import Cookie from 'moviematcher/utils/cookies';
 export default Ember.Controller.extend({
   actions: {
 		userLogin(username, password) {
+      const loginThis = this;
 		  const sessionDurationSeconds = 2 * 60 * 60; // 2 hours
-			return new RestUtils().post('/v1/login', {username, password})
+			return new RestUtils().post('/v1/login', {data: {username, password}})
         .then((value) => {
           const cookie = Cookie.create({name: 'session'});
           cookie.save(value.session_id, sessionDurationSeconds);
-          this.transitionToRoute('index');
+          loginThis.transitionToRoute('index');
         });
 		}
 	}
