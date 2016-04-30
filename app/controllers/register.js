@@ -9,14 +9,12 @@ export default Ember.Controller.extend({
 			const sessionDurationSeconds = 2 * 60 * 60; // 2 hours
 			return new RestUtils().post('/v1/login/register', {data: {firstname, lastname, username, password, confirmpassword}})
         		.then((value) => {
-        		  if(value === "success") {
-	      			  const cookie = Cookie.create({name: 'session'});
-	          		  cookie.save(value.session_id, sessionDurationSeconds);
-	      			  registerThis.transitionToRoute('index');
-      			  }
-      			  else {
-      			  	alert(value);
-      			  }
+      			  const cookie = Cookie.create({name: 'session'});
+          		  cookie.save(value.session_id, sessionDurationSeconds);
+      			  registerThis.transitionToRoute('login');
+        	}, (reason) => {
+        		alert(reason);
+        		return false;
         	});
 		}
 	}

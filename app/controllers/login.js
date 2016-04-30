@@ -12,6 +12,10 @@ export default Ember.Controller.extend({
           const cookie = Cookie.create({name: 'session'});
           cookie.save(value.session_id, sessionDurationSeconds);
           loginThis.transitionToRoute('index');
+        }, (reason) => {
+          alert(reason);
+          loginThis.transitionToRoute('register');
+          return false;
         });
 		}
 	}
