@@ -14,7 +14,11 @@ Router.map(function() {
     this.route('search', { path: '/search/:search' });
   });
   this.route('groups');
-  this.route('friends');
+  this.route('friends', function() {
+    this.route('index', {path: '/'} );
+    this.route('search', {path: '/search'});
+    this.route('search', {path: '/search/:search'});
+  });
   this.route('settings');
 });
 
