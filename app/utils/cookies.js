@@ -1,5 +1,3 @@
-import Ember from 'ember';
-
 /**
  * Initialize by setting name property like so
  * import Cookie from 'moviematcher/utils/cookies';
@@ -8,13 +6,17 @@ import Ember from 'ember';
  * cookie.save('29376497', 2 * 60 * 60); // 2 hours
  * var cookieString = cookie.load();
  */
-export default Ember.Object.extend({
+export default class Cookie {
+  constructor(name) {
+    this.name = name;
+  }
+
   save(value, expireSeconds) {
     let date = new Date();
     date.setTime(date.getTime() + (expireSeconds * 1000));
     const expires = "expires="+ date.toUTCString();
     document.cookie = this.name + "=" + value + "; " + expires + "; path=/";
-  },
+  }
 
   load() {
       const name = this.name + "=";
@@ -28,6 +30,6 @@ export default Ember.Object.extend({
               return c.substring(name.length, c.length);
           }
       }
-      return "";
+      return undefined;
   }
-});
+}
