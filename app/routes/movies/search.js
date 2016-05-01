@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import RestUtils from 'moviematcher/utils/rest';
 
 export default Ember.Route.extend({
   model(params) {
@@ -7,16 +8,11 @@ export default Ember.Route.extend({
     }
 		const query = params.search;
 		if(query) {
-		  return new Ember.RSVP.Promise(function(resolve, reject) {
-        Ember.$.getJSON(
-          `/v1/movies/search/${query}`,
-          {results: 20, page:1},
-          resolve
-        ).fail(reject);
-      }).then(function(data) {
-        params['data'] = data;
-        return params;
-      });
+		  return RestUtils.get(this, `/v1/movies/search/${query}`, {data: {results: 20, page:1}})
+        .then(function(data) {
+          params['data'] = data;
+          return params;
+        });
 		}
 		return {};
   }

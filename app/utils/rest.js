@@ -1,11 +1,9 @@
 import Ember from 'ember';
+import Utils from 'moviematcher/utils/general';
 
-export default Ember.Object.extend({
-  service(method, url, options = {
-    dataType: 'json',
-  }) {
+export default class RestUtils {
+  static service(route, method, url, options = {dataType: 'json'}) {
     return new Ember.RSVP.Promise(function(resolve, reject) {
-
       options.url = url;
       options.type = method;
       options.success = resolve;
@@ -14,9 +12,19 @@ export default Ember.Object.extend({
         options.data = JSON.stringify(options.data);
         options.contentType = 'application/json';
       }
+      const authorization = Utils.authToken();
+      if(authorization) {
+        if(! options.headers) {
+          options.headers = {};
+        }
+        options.headers['Authorization'] = authorization;
+      }
       return Ember.$.ajax(options);
-    }).catch(function(reason) {
-      if(reason.status / 100 === 4 || reason.status / 100 === 5) {
+    }).catch((reason) => {
+      if(reason.status === 401) {
+        Utils.login(route);
+      }
+      else if(reason.status / 100 === 4 || reason.status / 100 === 5) {
         // is 4XX or 5XX error
         throw new Error(reason.responseText);
       }
@@ -24,13 +32,13 @@ export default Ember.Object.extend({
         throw reason;
       }
     });
-  },
-
-  get(url, options) {
-    return this.service('GET', url, options);
-  },
-
-  post(url, options) {
-    return this.service('POST', url, options);
   }
-});
+
+  static get(route, url, options) {
+    return this.service(route, 'GET', url, options);
+  }
+
+  static post(route, url, options) {
+    return this.service(route, 'POST', url, options);
+  }
+}
