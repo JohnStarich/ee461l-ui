@@ -15,7 +15,7 @@ export default class Utils {
 
 	static login(route) {
 		const currentPath = Utils.currentPath();
-		if(currentPath.startsWith("/login")) {
+		if(currentPath.startsWith("/login") || currentPath.startsWith("/register")) {
 			//TODO alert the user of "unauthorized" on login page
 			return;
 		}

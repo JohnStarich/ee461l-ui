@@ -8,11 +8,12 @@ export default Ember.Controller.extend({
   actions: {
 		userLogin(username, password) {
 		  const sessionDurationSeconds = 2 * 60 * 60; // 2 hours
-			return RestUtils.post(undefined, '/v1/login', {data: {username, password}})
+			return RestUtils.post(undefined, '/v1/users/login', {data: {username, password}})
         .then((value) => {
           const cookie = new Cookie('session');
-          cookie.save(value.session_id, sessionDurationSeconds);
+          cookie.save(value._id, sessionDurationSeconds);
           if(this.get('redirect')) {
+            console.log("Redirecting to: "+this.get('redirect'));
             this.transitionToRoute(this.get('redirect'));
           }
           else {

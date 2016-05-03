@@ -1,21 +1,20 @@
 import Ember from 'ember';
 import RestUtils from 'moviematcher/utils/rest';
-import Cookie from 'moviematcher/utils/cookies';
 
 export default Ember.Controller.extend({
-  	actions: {
-		userRegister(firstname, lastname, username, password, confirmpassword) {
-			const registerThis = this;
-			const sessionDurationSeconds = 2 * 60 * 60; // 2 hours
-			return new RestUtils().post('/v1/login/register', {data: {firstname, lastname, username, password, confirmpassword}})
-        		.then((value) => {
-      			  const cookie = Cookie.create({name: 'session'});
-          		  cookie.save(value.session_id, sessionDurationSeconds);
-      			  registerThis.transitionToRoute('login');
-        	}, (reason) => {
-        		alert(reason);
-        		return false;
-        	});
+	actions: {
+		userRegister(first_name, last_name, username, password, old_password) {
+			return RestUtils.post(undefined, '/v1/users', {data: {first_name, last_name, username, password, old_password}})
+				.then((value) => {
+					if(! value) {
+						alert("Error registering, please try again");
+						return false;
+					}
+					this.transitionToRoute('login');
+				}, (reason) => {
+					alert(reason);
+					return false;
+				});
 		}
 	}
 });
