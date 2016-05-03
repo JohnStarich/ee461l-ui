@@ -1,9 +1,47 @@
 {{title "Settings"}}
 
-{{#bs-collapse collapsed=collapsed}}
- <div class="well">
-   <h2>Collapse</h2>
-   <p>This is collapsible content</p>
- </div>
-{{/bs-collapse}}
+  <h3>{{model.username}}</h3>
+
+  <h4> name : {{model.first_name}} {{model.last_name}}</h4>
+
+  <br>
+
+ {{#bs-accordion selected=selected}}
+
+     {{#bs-accordion-item value="1" title="Change Password"}}
+       {{#bs-form-group}}
+       	<form id="loginform" class="form-horizontal" role="form" {{action "changePassword" current new confirm on="submit"}}> 
+  			<label class="control-label">Current Password</label>
+        {{input type='password' value=current class="form-control" placeholder="Current Password"}}
+
+  			<label class="control-label">New Password</label>
+        {{input type='password' value=new class="form-control" placeholder="Enter new password"}}
+
+  			<label class="control-label">Confirm Password</label>
+        {{input type='password' value=confirm class="form-control" placeholder="Re enter new password"}}
+
+  			<div class="col-sm-12 controls">
+				{{input name="Login" type="submit" class="btn-login btn btn-block btn-success"}}
+			</div>
+		</form>
+	   {{/bs-form-group}}
+     {{/bs-accordion-item}}
+
+     {{#bs-accordion-item value="2" title="Change Name"}}
+       {{#bs-form-group}}
+       	<form id="loginform" class="form-horizontal" role="form" {{action "changeName" first last on="submit"}}> 
+  			<label class="control-label">New Firstname</label>
+  			{{input type='text' value=first class="form-control" placeholder="new firstname"}}
+
+  			<label class="control-label">New Lastname</label>
+  			{{input type='text' value=last class="form-control" placeholder="new lastname"}}
+
+  			<div class="col-sm-12 controls">
+				{{input name="Login" type="submit" class="btn-login btn btn-block btn-success"}}
+			</div>
+		</form>
+	   {{/bs-form-group}}
+     {{/bs-accordion-item}}
+
+ {{/bs-accordion}}
 
