@@ -7,7 +7,6 @@ export default Ember.Controller.extend({
 
   actions: {
 		userLogin(username, password) {
-      const loginThis = this;
 		  const sessionDurationSeconds = 2 * 60 * 60; // 2 hours
 			return RestUtils.post(undefined, '/v1/users/login', {data: {username, password}})
         .then((value) => {
