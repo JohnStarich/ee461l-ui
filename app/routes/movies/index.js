@@ -1,20 +1,19 @@
 import Ember from 'ember';
+import RestUtils from 'moviematcher/utils/rest';
 
 export default Ember.Route.extend({
   model(params) {
-		const query = params.movie_id;
-		if(query) {
-		  return new Ember.RSVP.Promise(function(resolve, reject) {
-        Ember.$.getJSON(
-          `/v1/movies/${query}`,
-          resolve
-        ).fail(reject);
-      }).then(function(data) {
-        params['data'] = data;
-        return params;
-      });
-		}
-		return {};
+		const movie_id = params.movie_id;
+    if(movie_id) {
+      return RestUtils.get(this, `/v1/movies/${movie_id}`)
+        .then((data) => {
+          params['data'] = data;
+          return params;
+        }, (reason) => {
+          alert(reason);
+          return false;
+        });
+    }
   }
 });
 
