@@ -1,0 +1,19 @@
+<div class="panel panel-info" id="panel">
+  <div class="panel-heading" id="panel">
+	<h3 class="panel-title" >{{group.name}}</h3>
+    <div style="float:right">
+        {{#link-to 'groups.index' group.id}} <button type="button" class="glyphicon glyphicon-pencil">Edit</button> {{/link-to}}
+        <div> {{#link-to 'groups.add_user' group.name}} <button type="button" class="glyphicon glyphicon-plus">Add Users</button> {{/link-to}}</div>
+    </div>
+  <hr id="hr">
+  </div>
+  <div class="panel-body" id="panelbody">
+    <div class="col-md-8">
+    <p>
+    {{#each group.members as |member|}}
+        <p>{{member.first_name}} {{member.last_name}}</p>
+    {{/each}}
+    </p>
+    </div>
+  </div>
+</div>
