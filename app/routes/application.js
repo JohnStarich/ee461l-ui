@@ -3,7 +3,7 @@ import RestUtils from 'moviematcher/utils/rest';
 
 export default Ember.Route.extend({
 	model() {
-		return RestUtils.get(this, 'v1/login')
+		return RestUtils.get(this, '/v1/users')
 			.then((value) => {
 				return value;
 			});
