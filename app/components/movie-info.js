@@ -6,9 +6,6 @@ export default Ember.Component.extend({
 		updateRating(params) {
 			 const { item: movie, rating } = params;
 			 var id = movie.id;
-			 console.log(movie);
-			 console.log(id);
-			 console.log(rating);
 			 return RestUtils.post(this, 'v1/users/ratings', {data: {user: {id, rating}}})
 				.then((value) => {
 					alert(value);

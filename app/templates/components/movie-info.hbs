@@ -8,17 +8,28 @@
     	<p>{{movie.plot}}</p>
     	<p>{{movie.genre}}</p>
     	<p>
-      	{{#if movie.imdb_rating}}
-        	{{#star-rating maxRating=5 item=movie rating=movie.imdb_rating on-click=(action "updateRating") as |stars set|}}
+      	{{#if movie.user_rating}}
+        	{{#star-rating maxRating=5 item=movie rating=movie.user_rating on-click=(action "updateRating") as |stars set|}}
         		rating
         		{{#each stars as |star|}}
-          		<a {{action set star.rating}}>
+          		<a {{action set star.rating}} id="userstar">
             		{{#if star.full}}<span class="glyphicon glyphicon-star"></span>
                 {{else}} <span class="glyphicon glyphicon-star-empty"></span>
                 {{/if}}
           		</a>
         		{{/each}}
       	 {{/star-rating}}
+         {{else}}
+          {{#star-rating maxRating=5 item=movie rating=movie.imdb_rating on-click=(action "updateRating") as |stars set|}}
+            rating
+            {{#each stars as |star|}}
+              <a {{action set star.rating}}>
+                {{#if star.full}}<span class="glyphicon glyphicon-star"></span>
+                {{else}} <span class="glyphicon glyphicon-star-empty"></span>
+                {{/if}}
+              </a>
+            {{/each}}
+         {{/star-rating}}
         {{/if}}
       </p>
 

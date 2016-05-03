@@ -9,7 +9,12 @@ export default Ember.Route.extend({
 		const query = params.search;
 		if(query) {
 		  return RestUtils.get(this, `/v1/movies/search/${query}`, {data: {results: 20, page:1}})
-        .then(function(data) {
+        .then(function(value) {
+          var data = value.movies.map((movie) => {
+            movie.user_rating = value.ratings[movie.id];
+            movie.imdb_rating = movie.imdb_rating / 2;
+            return movie;
+          });
           params['data'] = data;
           return params;
         });
