@@ -41,4 +41,16 @@ export default class RestUtils {
   static post(route, url, options) {
     return this.service(route, 'POST', url, options);
   }
+
+  static patch(route, url, options) {
+    return this.service(route, 'PATCH', url, options);
+  }
+
+  static put(route, url, options) {
+    return this.service(route, 'PUT', url, options);
+  }
+
+  static delete(route, url, options) {
+    return this.service(route, 'DELETE', url, options);
+  }
 }

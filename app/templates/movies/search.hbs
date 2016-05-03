@@ -3,8 +3,9 @@
 <form {{action 'search' on='submit' query=model.search}}>
     {{input type='text' value=model.search class="form-control" placeholder="Search movies"}}
 </form>
+
 <br>
 
-{{#each model.data as |movie|}}
-    {{movie-info movie = movie}}
+{{#each model.data as |movie| }}
+    {{movie-info movie = movie }}
 {{/each}}
