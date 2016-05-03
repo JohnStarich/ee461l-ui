@@ -34,7 +34,6 @@ export default class Cookie {
   }
 
   delete() {
-    console.log("bye cookie");
     document.cookie = this.name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
   }
 }
