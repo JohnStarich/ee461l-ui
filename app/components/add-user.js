@@ -8,7 +8,6 @@ export default Ember.Component.extend({
 			 return RestUtils.post(this, 'v1/friends', {data: {newFriend_id: newFriend_id}})
 				.then((value) => {
 					alert(value);
-					value.display = 0;
 					return value;
 				},
 				(reason) => {
