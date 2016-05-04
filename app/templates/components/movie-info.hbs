@@ -36,6 +36,8 @@
 
 			<p>{{#link-to 'movies.index' movie.id}}See more info{{/link-to}}</p>
 		</div>
-		<img class="movie-poster" src="{{movie.poster}}" >
+		{{#if movie.poster}}
+			<img class="movie-poster" src="{{movie.poster}}" >
+		{{/if}}
 	</div>
 </div>
