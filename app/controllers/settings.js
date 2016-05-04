@@ -8,7 +8,6 @@ export default Ember.Controller.extend({
 				alert("please enter a password");
 				return false;
 			}
-
 			if(password === new_password) {
 				return RestUtils.patch(this, 'v1/users', {data: {user: {old_password, password}}})
 				.then((value) => {

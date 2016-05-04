@@ -1,7 +1,7 @@
-<div class="movie-panel">
-	<div class="movie-body">
-		<div class="movie-content">
-			<h3 class="movie-title" >{{movie.title}}</h3>
+<div class="mm-panel">
+	<div class="mm-body">
+		<div class="mm-content">
+			<h3 class="mm-heading" >{{movie.title}}</h3>
 			<p>{{movie.plot}}</p>
 			<p>{{movie.genre}}</p>
 			{{#if movie.user_rating}}
@@ -33,11 +33,10 @@
 					{{/star-rating}}
 				</p>
 			{{/if}}
-
 			<p>{{#link-to 'movies.index' movie.id}}See more info{{/link-to}}</p>
 		</div>
 		{{#if movie.poster}}
-			<img class="movie-poster" src="{{movie.poster}}" >
+			<img class="mm-poster" src="{{movie.poster}}" >
 		{{/if}}
 	</div>
 </div>
