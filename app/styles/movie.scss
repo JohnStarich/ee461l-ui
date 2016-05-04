@@ -1,0 +1,44 @@
+.movie-panel {
+	max-height: 20em;
+	border-bottom: 1px solid #444;
+
+	.movie-heading {
+	}
+
+	.movie-poster {
+		align-self: flex-end;
+		width: 100%;
+		max-width: 10em;
+		max-height: 100%;
+		margin: 2em;
+	}
+
+	.movie-content {
+		flex-grow: 1;
+	}
+
+	.movie-body {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.star-rating {
+		cursor: pointer;
+
+		&.user-rating a {
+			color: #d7b936;
+
+			&:hover {
+				color: lighten(#d7b936, 30%);
+			}
+		}
+
+		&.imdb-rating a {
+			color: #337ab7;
+
+			&:hover {
+				color: lighten(#337ab7, 30%);
+			}
+		}
+	}
+}

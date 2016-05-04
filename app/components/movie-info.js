@@ -8,6 +8,7 @@ export default Ember.Component.extend({
 			 var id = movie.id;
 			 return RestUtils.post(this, 'v1/users/ratings', {data: {user: {id, rating}}})
 				.then((value) => {
+					Ember.set(params, 'item.user_rating', rating);
 					alert(value);
 					return value;
 				},
