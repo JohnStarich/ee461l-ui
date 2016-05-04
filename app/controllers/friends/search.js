@@ -29,6 +29,6 @@ export default Ember.Controller.extend({
       if(query) {
         this.transitionToRoute('friends.search', query);
       }
-    }
+    },
   }
 });

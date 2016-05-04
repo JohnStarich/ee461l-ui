@@ -1,11 +1,11 @@
-.movie-panel {
+.mm-panel {
 	max-height: 20em;
 	border-bottom: 1px solid #444;
 
-	.movie-heading {
+	.mm-heading {
 	}
 
-	.movie-poster {
+	.mm-poster {
 		align-self: flex-end;
 		width: 100%;
 		max-width: 10em;
@@ -13,14 +13,22 @@
 		margin: 2em;
 	}
 
-	.movie-content {
+	.mm-content {
 		flex-grow: 1;
 	}
 
-	.movie-body {
+	.mm-body {
 		display: flex;
 		flex-direction: row;
 	}
+
+  .mm-button1 {
+    margin-bottom: 1em;
+  }
+
+  .mm-button2 {
+      margin-top: 1em;
+  }
 
 	.star-rating {
 		cursor: pointer;
