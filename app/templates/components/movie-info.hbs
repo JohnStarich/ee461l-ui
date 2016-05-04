@@ -1,43 +1,41 @@
-<div class="panel panel-info" id="panel">
-  <div class="panel-heading" id="panel">
-  	<h3 class="panel-title" >{{movie.title}}</h3>
-    <hr id="hr">
-  </div>
-  <div class="panel-body" id="panelbody">
-    <div class="col-md-8">
-    	<p>{{movie.plot}}</p>
-    	<p>{{movie.genre}}</p>
-    	<p>
-      	{{#if movie.user_rating}}
-        	{{#star-rating maxRating=5 item=movie rating=movie.user_rating on-click=(action "updateRating") as |stars set|}}
-        		rating
-        		{{#each stars as |star|}}
-          		<a {{action set star.rating}} id="userstar">
-            		{{#if star.full}}<span class="glyphicon glyphicon-star"></span>
-                {{else}} <span class="glyphicon glyphicon-star-empty"></span>
-                {{/if}}
-          		</a>
-        		{{/each}}
-      	 {{/star-rating}}
-         {{else}}
-          {{#star-rating maxRating=5 item=movie rating=movie.imdb_rating on-click=(action "updateRating") as |stars set|}}
-            rating
-            {{#each stars as |star|}}
-              <a {{action set star.rating}}>
-                {{#if star.full}}<span class="glyphicon glyphicon-star"></span>
-                {{else}} <span class="glyphicon glyphicon-star-empty"></span>
-                {{/if}}
-              </a>
-            {{/each}}
-         {{/star-rating}}
-        {{/if}}
-      </p>
+<div class="movie-panel">
+	<div class="movie-body">
+		<div class="movie-content">
+			<h3 class="movie-title" >{{movie.title}}</h3>
+			<p>{{movie.plot}}</p>
+			<p>{{movie.genre}}</p>
+			{{#if movie.user_rating}}
+				<p class="star-rating user-rating">
+					{{#star-rating maxRating=5 item=movie rating=movie.user_rating on-click=(action "updateRating") as |stars set|}}
+						{{#each stars as |star|}}
+							<a {{action set star.rating}}>
+								{{#if star.full}}
+									<span class="glyphicon glyphicon-star"></span>
+								{{else}}
+									<span class="glyphicon glyphicon-star-empty"></span>
+								{{/if}}
+							</a>
+						{{/each}}
+					{{/star-rating}}
+				</p>
+			{{else}}
+				<p class="star-rating imdb-rating">
+					{{#star-rating maxRating=5 item=movie rating=movie.imdb_rating on-click=(action "updateRating") as |stars set|}}
+						{{#each stars as |star|}}
+							<a {{action set star.rating}}>
+								{{#if star.full}}
+									<span class="glyphicon glyphicon-star"></span>
+								{{else}}
+									<span class="glyphicon glyphicon-star-empty"></span>
+								{{/if}}
+							</a>
+						{{/each}}
+					{{/star-rating}}
+				</p>
+			{{/if}}
 
-      <p>{{#link-to 'movies.index' movie.id}}See more info{{/link-to}}</p>
-    </div>
-
-     <div class="col-md-4">
-         <img src="{{movie.poster}}" >
-     </div>
-  </div>
+			<p>{{#link-to 'movies.index' movie.id}}See more info{{/link-to}}</p>
+		</div>
+		<img class="movie-poster" src="{{movie.poster}}" >
+	</div>
 </div>

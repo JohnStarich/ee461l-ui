@@ -1,8 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  // status: undefined,
-
   serializedQuery: Ember.computed('model.search', function() {
     const query = this.get('model.search');
     if(query !== undefined && query !== '' && query.trim().length > 0){
