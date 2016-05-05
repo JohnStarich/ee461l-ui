@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
   actions: {
     createGroup(group_name) {
       if(group_name !== undefined && group_name !== '' && group_name.trim().length > 0){
-        group_name = group_name.trim().split(' ').join('+');
+        group_name = group_name.trim();
         return RestUtils.post(this, '/v1/groups/', {data: {group_name}})
           .then((data) => {
              if(this.get('redirect')) {
