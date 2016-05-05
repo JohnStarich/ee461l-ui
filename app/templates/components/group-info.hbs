@@ -2,10 +2,8 @@
     <div class="mm-heading">
         <h3 class="mm-heading" >{{group.name}}</h3>
         <div style="float:right">
-            <!--         { {#link-to 'groups.index' group.id}} <button type="button" class="glyphicon glyphicon-pencil">Edit</button> { {/link-to}} -->
-            <div> {{#link-to 'groups.add_user' group.name}} <button type="button" class="glyphicon glyphicon-plus">Add Users</button> {{/link-to}}</div>
+            <div> {{#link-to 'groups.recommendations' group.name}} <button type="button" class="glyphicon glyphicon-film"> Movie Match </button> {{/link-to}}</div>
         </div>
-        <hr id="hr">
     </div>
     <div class="mm-content">
         <p>
@@ -14,5 +12,6 @@
             {{/each}}
         </p>
     </div>
+    <div> {{#link-to 'groups.add_user' group.name}} <button type="button" class="glyphicon glyphicon-plus" style="margin-bottom:1em;"> Add User </button> {{/link-to}}</div>
 </div>
 

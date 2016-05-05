@@ -1,0 +1,9 @@
+{{title 'Recommendations'}}
+
+<p>recommendations for {{model.group_name}}!</p>
+
+<br>
+
+{{#each model.data as |movie| }}
+    {{movie-info movie = movie }}
+{{/each}}
