@@ -1,0 +1,18 @@
+<div class="mm-panel">
+    <div class="mm-heading">
+        <h3 class="mm-heading" >{{group.name}}</h3>
+        <div style="float:right">
+            <!--         { {#link-to 'groups.index' group.id}} <button type="button" class="glyphicon glyphicon-pencil">Edit</button> { {/link-to}} -->
+            <div> {{#link-to 'groups.add_user' group.name}} <button type="button" class="glyphicon glyphicon-plus">Add Users</button> {{/link-to}}</div>
+        </div>
+        <hr id="hr">
+    </div>
+    <div class="mm-content">
+        <p>
+            {{#each group.members as |member|}}
+                <p>{{member.first_name}} {{member.last_name}}</p>
+            {{/each}}
+        </p>
+    </div>
+</div>
+
