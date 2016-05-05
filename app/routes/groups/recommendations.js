@@ -7,9 +7,14 @@ export default Ember.Route.extend({
     if(group_name) {
       params['group_name'] = group_name;
       return RestUtils.get(this, `/v1/groups/${group_name}/recommendations/`)
-      .then(function(data) {
-      params['data'] = data;
-      return params;
+      .then(function(value) {
+        var data = value.movies.map((movie) => {
+          movie.user_rating = value.ratings[movie.id];
+          movie.imdb_rating = movie.imdb_rating / 2;
+          return movie;
+        });
+        params['data'] = data;
+        return params;
       });
     } else {
 	      window.alert("recommending for which group?");
