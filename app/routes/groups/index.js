@@ -13,7 +13,6 @@ export default Ember.Route.extend({
               return group;
             });
             params['data'] = data;
-            console.log(params.data);
             return params;
           });
     } else {

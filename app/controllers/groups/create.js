@@ -8,7 +8,6 @@ export default Ember.Controller.extend({
         group_name = group_name.trim().split(' ').join('+');
         return RestUtils.post(this, '/v1/groups/', {data: {group_name}})
           .then((data) => {
-             console.log(data);
              if(this.get('redirect')) {
                this.transitionToRoute(this.get('redirect'));
              }
