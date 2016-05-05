@@ -16,12 +16,14 @@ export default Ember.Route.extend({
       return RestUtils.get(this,'/v1/friends')
                   .then( function(data) {
                     params['data'] = data;
+                    console.log(params.data);
                     return params;
                   });
     } else {
       return RestUtils.get(this,'/v1/friends')
             .then( function(data) {
               params['data'] = data;
+              console.log(params.data);
               return params;
             });
     }

@@ -9,6 +9,7 @@ export default Ember.Route.extend({
       return RestUtils.get(this, `/v1/groups/${group_name}/user`)
       .then(function(data) {
       params['data'] = data;
+      console.log(params.data);
       return params;
       });
     } else {

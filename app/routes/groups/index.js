@@ -7,15 +7,25 @@ export default Ember.Route.extend({
     const group_id = params.group_id;
     if(group_id) {
       return RestUtils.get(this, `/v1/groups/${group_id}`)
-          .then(function(data) {
+          .then(function(value) {
+            var data = value.groups.map((group) => {
+              group.members = value.members[group.name];
+              return group;
+            });
             params['data'] = data;
+            console.log(params.data);
             return params;
           });
     } else {
 		return RestUtils.get(this, `/v1/groups/`)
-        .then(function(data) {
-          params['data'] = data;
-          return params;
+        .then(function(value) {
+            var data = value.groups.map((group) => {
+              group.members = value.members[group.name];
+              return group;
+            });
+            params['data'] = data;
+            console.log(params.data);
+            return params;
         });
     }
   }
