@@ -4,6 +4,7 @@ body, p, h1, h2, h3, h4, h5, h6 {
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 200;
+	margin: 0;
 }
 
 body {
@@ -31,7 +32,6 @@ body {
 
 	h1 {
 		font-size: 1em;
-		margin: 0;
 	}
 
 	.nav > li > a:hover {
@@ -39,64 +39,10 @@ body {
 	}
 }
 
-input[type='text'], input[type='password'] {
-	background-color: #222;
-	color: white;
-	border-color: #444;
-	font-size: 1.5em;
-	padding: 0 1em;
-	height: 2em;
-}
-
-form {
-	> :first-child input {
-		border-top-left-radius: 0.25em;
-		border-top-right-radius: 0.25em;
-	}
-
-	> :last-child input {
-		border-bottom-left-radius: 0.25em;
-		border-bottom-right-radius: 0.25em;
-	}
-
-	> .input-group {
-		&:not(:first-child) {
-			span {
-				border-top-left-radius: 0;
-			}
-
-			input {
-				border-top: none;
-				border-top-right-radius: 0;
-			}
-		}
-
-		&:not(:last-child) {
-			span {
-				border-bottom-left-radius: 0;
-			}
-
-			input {
-				border-bottom-right-radius: 0;
-			}
-		}
-	}
-
-	> .form-group {
-		&:not(:first-child) input {
-			border-top-left-radius: 0;
-			border-top-right-radius: 0;
-		}
-	}
-}
-
 #main-content {
-	margin: 5em;
+	margin: 2em 5em;
+	margin-bottom: 5em;
 }
 
-/** Temporary fix for bootstrap stuff */
-.panel {
-	color: black;
-}
-
+@import 'input';
 @import 'panels';
