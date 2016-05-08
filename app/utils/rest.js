@@ -2,10 +2,15 @@ import Ember from 'ember';
 import Utils from 'moviematcher/utils/general';
 
 export default class RestUtils {
-  static service(route, method, url, options = {dataType: 'json'}) {
+  static service(route, method, url, options) {
+    if(route instanceof String) {
+      throw new Error("Route provided for ajax call is not of type Ember.Route");
+    }
     return new Ember.RSVP.Promise(function(resolve, reject) {
+      if(! options) { options = {}; }
       options.url = url;
       options.type = method;
+      if(! options.dataType) { options.dataType = 'json'; }
       options.success = resolve;
       options.error = reject;
       if(method !== 'GET' && method !== 'get') {
