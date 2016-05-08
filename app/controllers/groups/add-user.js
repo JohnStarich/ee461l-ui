@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
       if(username !== undefined && username !== '' && username.trim().length > 0){
         username = username.trim().split(' ').join('+');
         return RestUtils.post(this, `/v1/groups/${group_name}/user/`, {data: {username}})
-          .then((data) => {
+          .then(() => {
             if(this.get('redirect')) {
               this.transitionToRoute(this.get('redirect'));
             } else {
