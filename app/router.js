@@ -22,7 +22,7 @@ Router.map(function() {
     this.route('index', { path: '/' });
     this.route('index', { path: '/:group_id' });
     this.route('create', {path: '/create/'});
-    this.route('add_user', { path: '/:group_name/user/' });
+    this.route('add-user', { path: '/:group_name/user/' });
     this.route('recommendations', { path: '/:group_name/recommendations/' });
   });
   this.route('settings');
