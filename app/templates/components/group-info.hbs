@@ -2,10 +2,11 @@
 {{!-- If statement lets us delete a group in real-time. --}}
 <div class="mm-panel">
     <div class="mm-body">
-        <h3 class="mm-heading">{{group.name}}</h3>
         <div class="mm-content">
+            <h3 class="mm-heading">{{group.name}}</h3>
+            <br>
             {{#each group.members as |member|}}
-                <p>{{member.first_name}} {{member.last_name}}</p>
+                <p>{{member.first_name}} {{member.last_name}} <em>{{member.username}}</em></p>
             {{/each}}
         </div>
         <div>

@@ -1,9 +1,12 @@
 {{title "Groups"}}
 <div>
-    <span class="glyphicon glyphicon-{{status}}" aria-hidden="true"></span>
+	{{#link-to 'groups.create'}}
+		<button type="button">
+			<span class="glyphicon glyphicon-plus"></span>
+			Add Group
+		</button>
+	{{/link-to}}
 </div>
-<br>
-<div> {{#link-to 'groups.create'}} <button type="button" class="glyphicon glyphicon-plus">Add Group</button> {{/link-to}}</div>
 
 {{#each model.data as |group|}}
     {{group-info group = group}}
