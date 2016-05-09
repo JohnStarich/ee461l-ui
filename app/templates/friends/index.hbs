@@ -1,20 +1,9 @@
 {{title "Friends"}}
 
-<div class="row">
-    <div class="container-fluid">
-        <div class="col-md-6">
-            <h5>Search our User Database in order to find friends!</h5>
-        </div>
-    </div>
-</div>
-
 <form {{action 'search' on='submit' query=model.search}}>
-    {{input type='text' value=model.search class="form-control" placeholder="Search users"}}
+    {{input type='text' value=model.search class="form-control" placeholder="Search for friends"}}
 </form>
 
-<br>
 {{#each model.data as |user|}}
     {{user-info user = user}}
 {{/each}}
-
-

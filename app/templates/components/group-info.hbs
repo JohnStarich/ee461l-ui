@@ -1,17 +1,39 @@
+{{#if group}}
+{{!-- If statement lets us delete a group in real-time. --}}
 <div class="mm-panel">
-    <div class="mm-heading">
-        <h3 class="mm-heading" >{{group.name}}</h3>
-        <div style="float:right">
-            <div> {{#link-to 'groups.recommendations' group.name}} <button type="button" class="glyphicon glyphicon-film"> Movie Match </button> {{/link-to}}</div>
+    <div class="mm-body">
+        <div class="mm-content">
+            <h3 class="mm-heading">{{group.name}}</h3>
+            <br>
+            {{#each group.members as |member|}}
+                <p>
+                    <button {{action 'removeUser' member.id}}>
+                        <span class="glyphicon glyphicon-minus"></span>
+                        Remove User
+                    </button>
+                    &nbsp;
+                    {{member.first_name}} {{member.last_name}} <em>{{member.username}}</em>
+                </p>
+            {{/each}}
+        </div>
+        <div>
+            <button class="button-danger" {{action 'deleteGroup'}}>
+                <span class="glyphicon glyphicon-minus"></span>
+                Delete Group
+            </button>
+            {{#link-to 'groups.add-user' group.name}}
+                <button>
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Add User
+                </button>
+            {{/link-to}}
+            {{#link-to 'groups.recommendations' group.name}}
+                <button type="button">
+                    <span class="glyphicon glyphicon-film"></span>
+                    Movie Match
+                </button>
+            {{/link-to}}
         </div>
     </div>
-    <div class="mm-content">
-        <p>
-            {{#each group.members as |member|}}
-                <p>{{member.first_name}} {{member.last_name}}</p>
-            {{/each}}
-        </p>
-    </div>
-    <div> {{#link-to 'groups.add_user' group.name}} <button type="button" class="glyphicon glyphicon-plus" style="margin-bottom:1em;"> Add User </button> {{/link-to}}</div>
 </div>
-
+{{/if}}

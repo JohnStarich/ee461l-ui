@@ -1,0 +1,14 @@
+{{title "Add a friend"}}
+
+<p>Add friends to "{{model.group_name}}"</p>
+
+{{#if model.data.value}}
+    {{#each model.data.value as |friend|}}
+        <button {{action 'addUser' friend.username model.group_name}}>
+            <span class="glyphicon glyphicon-plus"></span>
+            {{friend.first_name}} {{friend.last_name}} <em>{{friend.username}}</em>
+        </button>
+    {{/each}}
+{{else}}
+    No remaining friends to add your "{{model.group_name}}" group. Would you like to {{link-to 'find more friends' 'friends.index'}}?
+{{/if}}

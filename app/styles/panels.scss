@@ -10,7 +10,6 @@
 		width: 100%;
 		max-width: 10em;
 		max-height: 100%;
-		margin: 2em;
 	}
 
 	.mm-content {
@@ -20,15 +19,16 @@
 	.mm-body {
 		display: flex;
 		flex-direction: row;
+		margin: 2em 0;
 	}
 
-  .mm-button1 {
-    margin-bottom: 1em;
-  }
+	.mm-button1 {
+		margin-bottom: 1em;
+	}
 
-  .mm-button2 {
-      margin-top: 1em;
-  }
+	.mm-button2 {
+		margin-top: 1em;
+	}
 
 	.star-rating {
 		cursor: pointer;

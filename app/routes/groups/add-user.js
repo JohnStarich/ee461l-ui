@@ -7,12 +7,12 @@ export default Ember.Route.extend({
     if(group_name) {
       params['group_name'] = group_name;
       return RestUtils.get(this, `/v1/groups/${group_name}/user`)
-      .then(function(data) {
-      params['data'] = data;
-      return params;
-      });
+        .then(function(data) {
+          params['data'] = data;
+          return params;
+        });
     } else {
-	      window.alert("creating for which group?");
+	    alert("creating for which group?");
     }
   }
 });

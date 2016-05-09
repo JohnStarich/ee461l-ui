@@ -8,12 +8,7 @@ export default Ember.Route.extend({
     if(group_id) {
       return RestUtils.get(this, `/v1/groups/${group_id}`)
           .then(function(value) {
-            var data = value.groups.map((group) => {
-              group.members = value.members[group.name];
-              return group;
-            });
-            params['data'] = data;
-            return params;
+            return value;
           });
     } else {
 		return RestUtils.get(this, `/v1/groups/`)
