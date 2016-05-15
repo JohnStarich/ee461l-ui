@@ -11,7 +11,7 @@ export default Ember.Route.extend({
 				const movies = value.map((movie) => {
 					movie.imdb_rating /= 2;
 					return movie;
-				})
+				});
 				params['data'] = movies;
 				return params;
 			});
