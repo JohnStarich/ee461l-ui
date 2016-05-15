@@ -5,6 +5,9 @@ export default Ember.Controller.extend({
 	actions: {
 		userRegister(first_name, last_name, username, password, confirm_password) {
 			let errors = ["Please fix the following before registering:"];
+			if(! password || password.trim() === '') {
+				errors.push("Password cannot be blank");
+			}
 			if(password !== confirm_password) {
 				errors.push("Passwords do not match");
 			}
