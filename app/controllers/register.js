@@ -4,7 +4,7 @@ import RestUtils from 'moviematcher/utils/rest';
 export default Ember.Controller.extend({
 	actions: {
 		userRegister(first_name, last_name, username, password, confirm_password) {
-			let errors = ["Please fix the following before registering:"];
+			let errors = [];
 			if(! password || password.trim() === '') {
 				errors.push("Password cannot be blank");
 			}
@@ -21,8 +21,8 @@ export default Ember.Controller.extend({
 				errors.push("No last name provided");
 			}
 
-			if(errors.length > 1) {
-				alert(errors.join('\n'));
+			if(errors.length > 0) {
+				alert("Please fix the following before registering:\n" + errors.join('\n'));
 				return false;
 			}
 			return RestUtils.post(undefined, '/v1/users', {data: {first_name, last_name, username, password}})
